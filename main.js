@@ -7,10 +7,11 @@ const canvasHeight = 800;
 
 //draw point rectange filled at center position x, y
 function drawPoint(x, y) {
-    ctx.fillRect(x - pointSize/2, y - pointSize/2, pointSize, pointSize)
+    const point = math(x, y);
+    ctx.fillRect(point.x - pointSize/2, point.y - pointSize/2, pointSize, pointSize)
 }
 
-//take canvas coordinates x y and convert to math coordinate system, return object
+//take math coordinates and convert to canvas coordinates
 function math(x, y) {
     const screenX = x + canvasWidth / 2;
     const screenY = canvasHeight / 2 - y;
@@ -21,5 +22,8 @@ function math(x, y) {
     }
 }
 
-const p = math(0, 0);
-console.log(p);
+drawPoint(0, 0);
+drawPoint(100, 0);
+drawPoint(-100, 0);
+drawPoint(0, 100);
+drawPoint(0, -100);
