@@ -4,6 +4,7 @@ const ctx = canvas.getContext("2d");
 const pointSize = 10;
 const canvasWidth = 800;
 const canvasHeight = 800;
+const size = 100;
 
 //draw point rectange filled at center position x, y
 function drawPoint(x, y) {
@@ -13,6 +14,9 @@ function drawPoint(x, y) {
 
 //take math coordinates and convert to canvas coordinates
 function math(x, y) {
+    //take x and y and scale by size
+    x = x * size;
+    y = y * size;
     const screenX = x + canvasWidth / 2;
     const screenY = canvasHeight / 2 - y;
 
@@ -49,3 +53,9 @@ function drawAxis() {
 }
 
 drawAxis();
+
+drawPoint(0, 0);
+drawPoint(1, 0);
+drawPoint(-1, 0);
+drawPoint(0, 1);
+drawPoint(0, -1);
