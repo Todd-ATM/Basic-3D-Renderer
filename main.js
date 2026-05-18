@@ -52,6 +52,13 @@ function drawAxis() {
     drawLine(p1y, p2y);
 }
 
+function project({x, y, z}) {
+    return {
+        x: x/z,
+        y: y/z,
+    }
+}
+
 drawAxis();
 
-drawPoint({x: 0, y: 0});
+drawPoint(project({x: 0.5, y: 0, z:1}));
