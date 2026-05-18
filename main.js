@@ -7,13 +7,13 @@ const canvasHeight = 800;
 const size = 100;
 
 //draw point rectange filled at center position x, y
-function drawPoint(x, y) {
-    const point = math(x, y);
+function drawPoint(p) {
+    const point = math(p);
     ctx.fillRect(point.x - pointSize/2, point.y - pointSize/2, pointSize, pointSize)
 }
 
 //take math coordinates and convert to canvas coordinates
-function math(x, y) {
+function math({x, y}) {
     //take x and y and scale by size
     x = x * size;
     y = y * size;
@@ -28,8 +28,8 @@ function math(x, y) {
 
 function drawLine(p1, p2) {
     //convert p1 and p2 to screen coordinates
-    const point1 = math(p1.x, p1.y);
-    const point2 = math(p2.x, p2.y);
+    const point1 = math(p1);
+    const point2 = math(p2);
 
     ctx.beginPath();
     ctx.moveTo(point1.x, point1.y);
@@ -54,8 +54,4 @@ function drawAxis() {
 
 drawAxis();
 
-drawPoint(0, 0);
-drawPoint(1, 0);
-drawPoint(-1, 0);
-drawPoint(0, 1);
-drawPoint(0, -1);
+drawPoint({x: 0, y: 0});
