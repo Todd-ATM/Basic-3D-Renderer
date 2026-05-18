@@ -5,6 +5,8 @@ const pointSize = 10;
 const canvasWidth = 800;
 const canvasHeight = 800;
 const size = 100;
+const FPS = 60;
+let dz = 0;
 
 //draw point rectange filled at center position x, y
 function drawPoint(p) {
@@ -59,6 +61,16 @@ function project({x, y, z}) {
     }
 }
 
-drawAxis();
+function clear() {
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+}
 
-drawPoint(project({x: 0.5, y: 0, z:1}));
+function frame() {
+    clear();
+    const dt = 1/FPS
+    dz += 1*dt
+    drawPoint(project({x: 0.5, y: 0, z:0 + dz}));
+    setTimeout(frame, 1000/FPS);
+}
+
+setTimeout(frame, 1000/FPS);
